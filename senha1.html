@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuckenberg</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bloco-chave"> 
+         <!-- Campo com o texto que será copiado -->
+    <input type="text" id="meuTexto" value="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+
+    <!-- Botão que aciona a função -->
+    <button onclick="copiarTexto()">Copiar</button>
+    <script>
+        function copiarTexto() {
+            // 1. Seleciona o elemento de entrada
+            const campoTexto = document.getElementById("meuTexto");
+
+            // 2. Usa a API da Área de Transferência para copiar o valor
+            navigator.clipboard.writeText(campoTexto.value)
+                .then(() => {
+                    // Feedback visual de sucesso (opcional)
+                    alert("Texto copiado com sucesso!");
+                })
+                .catch(err => {
+                    console.error("Erro ao copiar: ", err);
+                });
+        }
+    </script>
+    </div>
+    <div> <input type="submit" onclick="window.location.href='index.html'" value="Voltar"></div>
+</body>
+</html>

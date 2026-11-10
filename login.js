@@ -1,4 +1,4 @@
-const API_IP = "10.99.0.253"; // Coloque o IP da sua máquina
+const API_IP = "temqvernahora"; // Coloque o IP da sua máquina
 const URL_SUBMETER = `http://${API_IP}:8080/api/enigma/submeter`;
 const EQUIPE_ID = "pc1"; // Alterar para pc2, pc3, pc4 em cada computador
 

@@ -1,8 +1,21 @@
 const texto = document.getElementById('meuTexto');
-const btnColar = document.getElementById('colar');
+const aviso = document.getElementById('aviso');
 const btnCopiar = document.getElementById('copiar');
-const btnLimpar = document.getElementById('limpar');
 const btnVoltar = document.getElementById('voltar');
+
+// login.js guarda o código e a mensagem da etapa antes de abrir esta página
+const conteudo = sessionStorage.getItem('conteudo_fase');
+const mensagem = sessionStorage.getItem('mensagem_fase');
+
+if (conteudo) {
+  texto.value = conteudo;
+  aviso.textContent = mensagem || '';
+  aviso.style.color = '#16a34a';
+} else {
+  texto.value = 'Volte à página anterior e digite a senha correta.';
+  aviso.textContent = 'Nenhum código recebido.';
+  aviso.style.color = '#b00020';
+}
 
 function feedback(botao, msg) {
   const original = botao.textContent;
@@ -18,21 +31,6 @@ btnCopiar.addEventListener('click', async () => {
     document.execCommand('copy');
   }
   feedback(btnCopiar, 'Copiado!');
-});
-
-btnColar.addEventListener('click', async () => {
-  try {
-    texto.value = await navigator.clipboard.readText();
-    feedback(btnColar, 'Colado!');
-  } catch {
-    texto.focus();
-    feedback(btnColar, 'Use Ctrl+V');
-  }
-});
-
-btnLimpar.addEventListener('click', () => {
-  texto.value = '';
-  texto.focus();
 });
 
 btnVoltar.addEventListener('click', () => {
